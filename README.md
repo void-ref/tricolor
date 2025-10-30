@@ -7,6 +7,8 @@ Ergonomic library for controlling four-pin (R, G, B, GND) tri-color LEDs.
 This example sets up an LED with a "breathing" effect to repeat every 4 seconds.
 
 ```cpp
+#include <Arduino.h>
+
 #include "tricolor/led.h"
 
 using namespace tricolor;
