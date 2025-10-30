@@ -1,0 +1,33 @@
+{
+    "$schema": "https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/schema/library.json",
+    "name": "tricolor",
+    "version": "0.1.0",
+    "description": "",
+    "keywords": [],
+    "homepage": "https://github.com/void-ref/tricolor",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/void-ref/tricolor.git"
+    },
+    "authors": [
+        {
+            "name": "Mitchell Matsumori-Kelly",
+            "maintainer": true,
+            "url": "https://github.com/void-ref"
+        }
+    ],
+    "license": "MIT",
+    "frameworks": [
+        "arduino"
+    ],
+    "platforms": "*",
+    "headers": [
+        "tricolor/led.h"
+    ],
+    "examples": [],
+    "dependencies": [],
+    "build": {
+        "includeDir": "./include",
+        "srcDir": "./src"
+    }
+}
