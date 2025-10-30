@@ -22,18 +22,13 @@
 
 #pragma once
 
-#include <freertos/FreeRTOS.h>
-
-#include <atomic>
-#include <functional>
 #include <memory>
 
-// #include "analog.h"
 #include "color.h"
 
 namespace tricolor {
 
-    using Time = uint16_t;
+    using Time = uint32_t;
 
     class Colorable {
     public:

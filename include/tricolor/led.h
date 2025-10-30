@@ -24,7 +24,7 @@
 
 #include "color.h"
 #include "effect.h"
-#include "pwm.h"
+#include "hal.h"
 
 namespace tricolor {
 
@@ -68,18 +68,18 @@ namespace tricolor {
         void update() {
             // first call to update() is skipped to generate an
             // accurate `elapsed` estimate
-            if (m_last_update != 0) {
-                Color c = m_effects.step(xTaskGetTickCount() - m_last_update);
+            if (m_last_update_time != 0) {
+                Color c = m_effects.step(uptime_ms() - m_last_update_time);
                 set_color(c);
             }
-            m_last_update = xTaskGetTickCount();
+            m_last_update_time = uptime_ms();
         }
 
     private:
         Pwm m_pwms[3];
 
         EffectChain m_effects;
-        TickType_t  m_last_update = 0;
+        uint32_t    m_last_update_time = 0;
     };
 
 } // namespace tricolor

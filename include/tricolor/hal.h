@@ -30,35 +30,14 @@ namespace tricolor {
 
     class Pwm {
     public:
-        Pwm() : Pwm(0) {}
+        Pwm();
+        Pwm(Pin pin);
+        Pwm(Pin pin, uint8_t min, uint8_t max);
 
-        Pwm(Pin pin) : Pwm(pin, 0, 255) {}
-
-        Pwm(Pin pin, uint8_t min, uint8_t max) : m_pin(pin), m_min(min), m_max(max) {}
-
-        Pwm& init(bool inverted) {
-            pinMode(m_pin, OUTPUT);
-            return *this;
-        }
-
-        Pwm& set(uint8_t level) {
-            m_level = level;
-            put(level);
-            return *this;
-        }
-
-        Pwm& set_range(uint8_t min, uint8_t max) {
-            m_min = (min < max) ? min : max;
-            m_max = (max < min) ? min : max;
-            rewrite();
-            return *this;
-        }
-
-        Pwm& set_inverted(bool inverted) {
-            m_inverted = inverted;
-            rewrite();
-            return *this;
-        }
+        Pwm& init(bool inverted);
+        Pwm& set(uint8_t level);
+        Pwm& set_range(uint8_t min, uint8_t max);
+        Pwm& set_inverted(bool inverted);
 
     private:
         Pin     m_pin;
@@ -67,17 +46,13 @@ namespace tricolor {
         bool    m_inverted = false;
         uint8_t m_level    = 0;
 
+        void put(uint8_t level);
+
         void rewrite() {
             put(m_level);
         }
-
-        void put(uint8_t level) {
-            if (m_inverted) {
-                level = 255 - level;
-            }
-            level = (level < m_min) ? m_min : (level > m_max) ? m_max : level;
-            analogWrite(m_pin, level);
-        }
     };
+
+    uint32_t uptime_ms();
 
 } // namespace tricolor
