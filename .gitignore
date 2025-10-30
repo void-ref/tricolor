@@ -1,0 +1,15 @@
+**/.pio
+.vscode
+
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Bb]in/
+[Ll]og/
+compile_commands.json
+
+*.tmp
+*.log
+
+__pycache__/
+*.pyc
